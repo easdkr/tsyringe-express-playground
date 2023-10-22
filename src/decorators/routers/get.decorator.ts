@@ -1,5 +1,5 @@
 import { IRouter } from './interfaces';
-import { ROUTE_METADATA } from './router.constants';
+import { ROUTE_METADATA, VALID_ROUTE_PATH_REGEX } from './router.constants';
 
 export const Get = (path = '/'): MethodDecorator => {
   return (target: unknown, propertyKey: string | symbol): void => {
@@ -11,6 +11,14 @@ export const Get = (path = '/'): MethodDecorator => {
       ROUTE_METADATA,
       target.constructor,
     ) as IRouter[];
+
+    const isDuplicatePath = routers.some(
+      (router) => router.path === path && router.requestMethod === 'get',
+    );
+
+    const isValidPathFormat = VALID_ROUTE_PATH_REGEX.test(path);
+
+    if (isDuplicatePath || !isValidPathFormat) return;
 
     routers.push({
       path,
