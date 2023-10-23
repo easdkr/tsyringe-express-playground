@@ -4,7 +4,7 @@ import { RouterRegister } from './router.register';
 import { AppController } from './controllers';
 
 const app = express();
-const routerRegister = new RouterRegister(app);
+const routerRegister = RouterRegister.create(app);
 routerRegister.explore([AppController]);
 
 app.listen(3000, () => {

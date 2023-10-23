@@ -1,5 +1,6 @@
 import 'reflect-metadata';
-import { Get, IRouter, ROUTE_METADATA } from '.';
+import { IRequest, REQUEST_METHOD_METADATA } from '.';
+import { Get } from './request-method.decorator';
 
 describe('@Get', () => {
   it('should add a route definition to the class metadata', async () => {
@@ -12,8 +13,8 @@ describe('@Get', () => {
     }
 
     //when
-    const routes: IRouter[] = Reflect.getMetadata(
-      ROUTE_METADATA,
+    const routes: IRequest[] = Reflect.getMetadata(
+      REQUEST_METHOD_METADATA,
       TestController,
     );
 
@@ -39,8 +40,8 @@ describe('@Get', () => {
     }
 
     //when
-    const routes: IRouter[] = Reflect.getMetadata(
-      ROUTE_METADATA,
+    const routes: IRequest[] = Reflect.getMetadata(
+      REQUEST_METHOD_METADATA,
       TestController,
     );
 
@@ -59,8 +60,8 @@ describe('@Get', () => {
     }
 
     //when
-    const routes: IRouter[] = Reflect.getMetadata(
-      ROUTE_METADATA,
+    const routes: IRequest[] = Reflect.getMetadata(
+      REQUEST_METHOD_METADATA,
       InvalidPathController,
     );
     //then
@@ -73,8 +74,8 @@ describe('@Get', () => {
     class NoRoutesController {}
 
     //when
-    const routes: IRouter[] = Reflect.getMetadata(
-      ROUTE_METADATA,
+    const routes: IRequest[] = Reflect.getMetadata(
+      REQUEST_METHOD_METADATA,
       NoRoutesController,
     );
 

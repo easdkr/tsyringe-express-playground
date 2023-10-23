@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { container } from 'tsyringe';
-import { IRouter, ROUTE_METADATA } from './decorators/routers';
+import { IRequest, REQUEST_METHOD_METADATA } from './decorators/requests';
 
 export class RouterRegister {
   readonly #app: Express.Application;
@@ -15,8 +15,8 @@ export class RouterRegister {
 
   public explore(controllers: unknown[]): void {
     controllers.map(container.resolve.bind(container)).map((controller) => {
-      const routers: IRouter[] = Reflect.getMetadata(
-        ROUTE_METADATA,
+      const routers: IRequest[] = Reflect.getMetadata(
+        REQUEST_METHOD_METADATA,
         controller.constructor,
       );
 
