@@ -22,7 +22,7 @@ export const requestMethod = ({
     ) as IRequest[];
 
     const isDuplicatePath = requests.some(
-      (req) => req.path === path && req.requestMethod === 'get',
+      (req) => req.path === path && req.requestMethod === method,
     );
 
     const validatePath =
@@ -50,3 +50,13 @@ export const createRequestMethodDecorator =
     requestMethod({ method, path });
 
 export const Get = createRequestMethodDecorator(RequestMethod.GET);
+
+export const Post = createRequestMethodDecorator(RequestMethod.POST);
+
+export const Put = createRequestMethodDecorator(RequestMethod.PUT);
+
+export const Patch = createRequestMethodDecorator(RequestMethod.PATCH);
+
+export const Delete = createRequestMethodDecorator(RequestMethod.DELETE);
+
+export const Options = createRequestMethodDecorator(RequestMethod.OPTIONS);
