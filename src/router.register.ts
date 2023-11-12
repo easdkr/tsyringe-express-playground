@@ -15,16 +15,10 @@ export class RouterRegister {
 
   public explore(controllers: unknown[]): void {
     controllers.map(container.resolve.bind(container)).map((controller) => {
-      const routers: IRequest[] = Reflect.getMetadata(
-        REQUEST_METHOD_METADATA,
-        controller.constructor,
-      );
+      const routers: IRequest[] = Reflect.getMetadata(REQUEST_METHOD_METADATA, controller.constructor);
 
       routers.forEach((route) => {
-        this.#app[route.requestMethod](
-          route.path,
-          controller[route.methodName].bind(controller),
-        );
+        this.#app[route.requestMethod](route.path, controller[route.methodName].bind(controller));
       });
     });
   }
