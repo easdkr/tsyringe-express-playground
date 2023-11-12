@@ -8,7 +8,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@libs/*": ["libs/*"]
+      "@libs/*": ["libs/*"],
+      "@config/*": ["config/*"]
     },
     "outDir": "build",
     "allowSyntheticDefaultImports": true,
@@ -26,5 +27,5 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["src/**/*", "__tests__/**/*", "libs/**/*"]
+  "include": ["src/**/*", "__tests__/**/*", "libs/**/*", "config/**/*"]
 }

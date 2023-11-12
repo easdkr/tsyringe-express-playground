@@ -27,3 +27,13 @@ build/
 
 # Misc
 .DS_Store
+
+# Ignore all .env files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+
+

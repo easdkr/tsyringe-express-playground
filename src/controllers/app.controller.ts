@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { AppService } from '../services';
 import { singleton } from 'tsyringe';
-import { Get } from '@libs/decorators';
+import { Get, Post } from '@libs/decorators';
+import { AppService } from '@/services';
 
 @singleton()
 export class AppController {
@@ -10,5 +10,11 @@ export class AppController {
   @Get()
   public sayHello(_req: Request, res: Response): void {
     res.send(this._appService.sayHello());
+  }
+
+  @Post('/health')
+  public async healthCheck(_req: Request, res: Response): Promise<void> {
+    const health = await this._appService.health();
+    res.send(health);
   }
 }
