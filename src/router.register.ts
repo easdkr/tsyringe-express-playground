@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { container } from 'tsyringe';
-import { IRequest, REQUEST_METHOD_METADATA } from './libs/decorators/requests';
+import { IRequest, REQUEST_METHOD_METADATA } from '../libs/decorators/requests';
 
 export class RouterRegister {
   readonly #app: Express.Application;

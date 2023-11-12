@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { AppService } from '../services';
 import { singleton } from 'tsyringe';
-import { Get } from '../libs';
+import { Get } from '@libs/decorators';
 
 @singleton()
 export class AppController {
