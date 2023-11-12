@@ -18,11 +18,14 @@
     "ts-api-utils": "^1.0.3",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
     "tsc-alias": "^1.8.8",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2"
   },
   "scripts": {
     "start": "node build/src/main.js",
+    "start:dev": "NODE_ENV=development ts-node-dev --transpile-only --respawn -r tsconfig-paths/register --trace-warnings --trace-uncaught -- ./src/main.ts",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
