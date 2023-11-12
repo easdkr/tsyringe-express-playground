@@ -1,9 +1,9 @@
-import { injectable } from 'tsyringe';
 import { Request, Response } from 'express';
 import { AppService } from '../services';
-import { Get } from '../decorators/requests/request-method.decorator';
+import { singleton } from 'tsyringe';
+import { Get } from '../libs';
 
-@injectable()
+@singleton()
 export class AppController {
   constructor(private readonly _appService: AppService) {}
 
