@@ -1,9 +1,12 @@
-import { Client } from 'pg';
-import { inject, singleton } from 'tsyringe';
+import { Inject, Injectable } from '@libs/decorators';
+import { DATASOURCE } from '@libs/database';
+import { Pool } from 'pg';
 
-@singleton()
+@Injectable()
 export class AppRepository {
-  constructor(@inject('pgClient') private readonly pgClient: Client) {}
+  constructor(@Inject(DATASOURCE) private readonly pgClient: Pool) {
+    console.log('AppRepository created');
+  }
 
   public async now(): Promise<boolean> {
     const queryres = await this.pgClient.query('SELECT now()');

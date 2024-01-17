@@ -1,7 +1,7 @@
 import { AppRepository } from '@/repositories';
-import { singleton } from 'tsyringe';
+import { Injectable } from '@libs/decorators';
 
-@singleton()
+@Injectable()
 export class AppService {
   constructor(private readonly _appRepository: AppRepository) {}
 

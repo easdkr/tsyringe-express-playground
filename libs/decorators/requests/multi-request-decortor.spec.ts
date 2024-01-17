@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import { IRequest, REQUEST_METHOD_METADATA } from '.';
 import { Get, Post } from './request-method.decorator';
+import { IRequest, REQUEST_METHOD_METADATA } from '@libs/decorators';
 
 describe('MultiRequest', () => {
   it('should add a route definition to the class metadata', async () => {
@@ -18,10 +18,7 @@ describe('MultiRequest', () => {
     }
 
     // when
-    const routes: IRequest[] = Reflect.getMetadata(
-      REQUEST_METHOD_METADATA,
-      TestController,
-    );
+    const routes: IRequest[] = Reflect.getMetadata(REQUEST_METHOD_METADATA, TestController);
 
     // then
     expect(routes).toHaveLength(2);
