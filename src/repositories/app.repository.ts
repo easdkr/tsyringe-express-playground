@@ -1,16 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Inject, Injectable } from '@libs/decorators';
-import { DATASOURCE } from '@libs/database';
-import { Pool } from 'pg';
+import { DATASOURCE, DataSource } from '@libs/database';
 
 @Injectable()
 export class AppRepository {
-  constructor(@Inject(DATASOURCE) private readonly pgClient: Pool) {
+  constructor(@Inject(DATASOURCE) private readonly dataSource: DataSource) {
     console.log('AppRepository created');
   }
 
   public async now(): Promise<boolean> {
-    const queryres = await this.pgClient.query('SELECT now()');
+    const queryres: any[] = await this.dataSource.query('SELECT now()');
 
-    return !!queryres.rows[0].now;
+    return !!queryres[0].now;
   }
 }

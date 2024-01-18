@@ -2,20 +2,21 @@ import 'reflect-metadata';
 import express from 'express';
 import { env } from '@config/index';
 import { appRouter } from '../libs';
-import { DATASOURCE, createDataSource } from '@libs/database';
+import { DATASOURCE, DataSource } from '@libs/database';
 import { container } from 'tsyringe';
 
 env();
 
 async function bootstrap(): Promise<void> {
-  const pgClient = await createDataSource({
+  const dataSource = new DataSource({
     user: process.env.POSTGRES_USER,
     host: process.env.POSTGRES_HOST,
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
+    max: 20,
   });
 
-  container.register(DATASOURCE, { useValue: pgClient });
+  container.register(DATASOURCE, { useValue: dataSource });
   require('./controllers');
   const app = express();
   app.use(appRouter);
