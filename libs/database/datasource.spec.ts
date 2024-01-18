@@ -1,10 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import 'reflect-metadata';
 import { DataSource } from '@libs/database';
 import { BaseDatasourceException } from '@libs/database/exceptions';
-import { env } from '@config/index';
-
-env();
 
 describe('DataSource', () => {
   let dataSource: DataSource;

@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { IRequest, REQUEST_METHOD_METADATA } from '.';
 import { Post } from './request-method.decorator';
 
@@ -13,10 +12,7 @@ describe('@Post', () => {
     }
 
     // when
-    const routes: IRequest[] = Reflect.getMetadata(
-      REQUEST_METHOD_METADATA,
-      TestController,
-    );
+    const routes: IRequest[] = Reflect.getMetadata(REQUEST_METHOD_METADATA, TestController);
 
     // then
     expect(routes).toHaveLength(1);
@@ -40,10 +36,7 @@ describe('@Post', () => {
     }
 
     // when
-    const routes: IRequest[] = Reflect.getMetadata(
-      REQUEST_METHOD_METADATA,
-      TestController,
-    );
+    const routes: IRequest[] = Reflect.getMetadata(REQUEST_METHOD_METADATA, TestController);
 
     // then
     expect(routes).toHaveLength(1);
@@ -60,10 +53,7 @@ describe('@Post', () => {
     }
 
     // when
-    const routes: IRequest[] = Reflect.getMetadata(
-      REQUEST_METHOD_METADATA,
-      InvalidPathController,
-    );
+    const routes: IRequest[] = Reflect.getMetadata(REQUEST_METHOD_METADATA, InvalidPathController);
 
     // then
     expect(routes).toHaveLength(0);
@@ -74,10 +64,7 @@ describe('@Post', () => {
     class MissingPathController {}
 
     // when
-    const routes: IRequest[] = Reflect.getMetadata(
-      REQUEST_METHOD_METADATA,
-      MissingPathController,
-    );
+    const routes: IRequest[] = Reflect.getMetadata(REQUEST_METHOD_METADATA, MissingPathController);
 
     // then
     expect(routes).toBeUndefined();

@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { Get, Post } from './request-method.decorator';
 import { IRequest, REQUEST_METHOD_METADATA } from '@libs/decorators';
 

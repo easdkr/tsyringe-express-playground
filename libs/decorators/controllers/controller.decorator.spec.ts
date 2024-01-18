@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { metadataScanner } from '@libs/metadata';
 import { Controller, Get } from '@libs/decorators';
 import { container } from 'tsyringe';
